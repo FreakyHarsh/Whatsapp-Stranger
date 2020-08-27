@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whatsapp Stranger</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="card w-75 container mx-auto mt-4 p-4">
+        <div class="form-group">
+            <label for="number">To:</label>
+            <input type="text" id="number" name="number" oninput="getInputData()" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="msg">Message*</label>
+            <textarea name="msg" id="msg" rows="3" class="form-control" oninput="getMessage()"
+                placeholder="hi"></textarea>
+        </div>
+        <button type="submit" id="submit" class="btn btn-success">Generate Link</button>
+    </div>
+    <div id="generatedLink" class="text-center p-2"></div>
+    <script>
+        function getInputData() {
+            let number = document.getElementById('number').value;
+        }
+
+        function getMessage() {
+            let msg = document.getElementById('msg').value;
+        }
+        document.getElementById('submit').addEventListener('click', (e) => {
+            let link = document.createElement('a');
+
+            link.classList.add('btn', 'btn-primary');
+            link.setAttribute('href', `https://api.whatsapp.com/send?phone=${number.value}&text=${msg.value}`);
+            link.innerText = "Send";
+
+            let wrapper = document.getElementById('generatedLink');
+
+            if (wrapper.innerHTML) {
+                console.log(wrapper.innerHTML);
+                wrapper.innerHTML = "";
+            }
+            wrapper.appendChild(link);
+        });
+
+    </script>
+</body>
+
+</html>
