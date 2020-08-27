@@ -18,7 +18,7 @@
         <div class="form-group">
             <label for="msg">Message*</label>
             <textarea name="msg" id="msg" rows="3" class="form-control" oninput="getMessage()"
-                placeholder="hi"></textarea>
+                placeholder="Hi"></textarea>
         </div>
         <button type="submit" id="submit" class="btn btn-success">Generate Link</button>
     </div>
@@ -35,6 +35,9 @@
             let link = document.createElement('a');
 
             link.classList.add('btn', 'btn-primary');
+            if (msg.value) {
+                msg.value = 'Hi'
+            }
             link.setAttribute('href', `https://api.whatsapp.com/send?phone=${number.value}&text=${msg.value}`);
             link.innerText = "Send";
 
