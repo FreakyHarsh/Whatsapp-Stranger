@@ -35,7 +35,7 @@
             let link = document.createElement('a');
 
             link.classList.add('btn', 'btn-primary');
-            if (msg) {
+            if (msg.value === '') {
                 msg.value = 'Hi'
             }
             link.setAttribute('href', `https://api.whatsapp.com/send?phone=91${number.value}&text=${msg.value}`);
